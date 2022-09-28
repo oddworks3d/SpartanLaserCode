@@ -19,7 +19,7 @@ Near the bottom, hit `install or update firmware` and follow the on screen instr
 ### Copy files to the Pi Pico
 Download the latest release from https://github.com/oddworks3d/SpartanLaserSoftware/releases and extract it.
 
-Inside should be four files: main.py, boot.py,ssd1306.py, and config
+Inside should be three files: main.py,ssd1306.py, and config
 
 Inside Thonny, open up main.py, then hit the `Restart / stop backend` button (red one) at the top of Thonny (This will connect Thonny to your Pi Pico)
 Now save the file main.py to the pi pico by hitting File -> Save -> Raspberry Pi Pico and saving it in the root directory.
@@ -52,6 +52,8 @@ if the servo starts and ends incorrectly, use the follow steps to adjust their s
 - Pull the trigger to enter the servo settings
 - use the `cooldown` button and `open / close` buttons to navigate to the servo you want to adjust and pull the trigger
 - navigate to either the start or end position and pull the trigger to adjust the start / end position (WARNING you can only adjust one servo at a time, when you adjust the start / end position, the servo will jump to the position you are currently adjusting!!)
-- Once youre done, pull the trigger to back out of adjusting the position
+- Once you're done, pull the trigger to back out of adjusting the position
 - To exit, navigate to back and pull the trigger, then navigate to back again and pull the trigger, and finally navigate to Save And Exit and pull the trigger to save the settings and restart the pico.
+
+You must hit save and exit for your settings to be saved.
 
