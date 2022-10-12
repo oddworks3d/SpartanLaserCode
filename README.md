@@ -14,20 +14,19 @@ To get the code onto the pico, you first need to download and install Thonny: ht
 ### Flash micropython to Pi Pico
 Once installed, head to Run in the top menu bar, then Select Interpreter, then in the dropdown that asks you what interpreter you want to use, select `MicroPython (Raspberry Pi Pico)`
 
-Near the bottom, hit `install or update firmware` and follow the on screen instructions to flash MicroPython to the pico.
+Near the bottom, hit `install or update firmware` and follow the on screen instructions to flash MicroPython to the pico. (Make sure the pico is connect and in USB storage mode by pressing and holding BOOTSEL while pluggin the pico into your computer)
 
 ### Copy files to the Pi Pico
 Download the latest release from https://github.com/oddworks3d/SpartanLaserSoftware/releases and extract it.
 
-Inside should be three files: main.py,ssd1306.py, and config
+Inside should be three files: main.py,ssd1306.py
 
 Inside Thonny, open up main.py, then hit the `Restart / stop backend` button (red one) at the top of Thonny (This will connect Thonny to your Pi Pico)
-Now save the file main.py to the pi pico by hitting File -> Save -> Raspberry Pi Pico and saving it in the root directory.
+Now save the file main.py to the pi pico by hitting File -> Save As -> Raspberry Pi Pico and saving it in the root directory ensuring it's named `main.py`
 
-Repeat the same steps for the other files, all going into the root directory of the Pico 
+Repeat the same steps for ssd1406.py, all going into the root directory of the Pico 
 
 The Spartan Laser code is now installed on your Pi Pico and ready to go!
-
 
 # Settings Menu
 To enter the settings menu, hold down the `open / close` button while powering the pico on.
