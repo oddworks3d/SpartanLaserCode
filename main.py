@@ -21,16 +21,23 @@ display = SSD1306_I2C(128, 64, i2c)
 
 
 # Hardcoded config file for if it doesnt exist on the pico
-
 config = {'vibrationMotor': {'pin': 27}, 'state': 'Closed', 'buttons': {'cooldown': {'pin': 21}, 'fire': {'pin': 21}, 'reload': {'pin': 21}, 'screen': {'pin': 21}}, 'colors': {'reloading': [[0, 255, 0], [0, 0, 0]], 'cooldown': [[155, 135, 135], [255, 255, 255]], 'normal': [[225, 0, 0], [15, 15, 15]], 'flash': [[255, 25, 25], [15, 15, 15]]}, 'lights': {'toplight': {'length': 18, 'pin': 4, 'flicker': True}, 'maglight': {'length': 9, 'pin': 17, 'flicker': False}, 'barrelled': {'pin': 22}}, 'servos': {'barrelEnd': {'pin': 19, 'start': 23, 'speed': 15, 'invert': True, 'end': 75, 'curpos': 23}, 'top1': {'pin': 21, 'start': 20, 'speed': 100, 'invert': True, 'end': 156, 'curpos': 20}, 'barrel': {'pin': 18, 'start': 26, 'speed': 100, 'invert': False, 'end': 52, 'curpos': 26}, 'screen': {'pin': 26, 'start': 2, 'speed': 100, 'invert': False, 'end': 58, 'curpos': 58}, 'top2': {'pin': 20, 'start': 20, 'speed': 100, 'invert': True, 'end': 149, 'curpos': 20}, 'top3': {'pin': 28, 'start': 20, 'speed': 100, 'invert': True, 'end': 160, 'curpos': 20}}}
 
 
 # Load config file from system (it holds all the servo settings and current position so the servos dont judder when it turns back on)
 if "config" in os.listdir():
-    file = open("config", "r")
-    config = json.loads(file.readline())
-    file.close()
+    try:
+        file = open("config", "r")
+        config = json.loads(file.readline())
+        file.close()
+    except ValueError:
+        # Problem reading config file, recreate it using the above hardcoded config file
+        print("Unable to read config file...Recreating")
+        file = open("config", "wb")
+        file.write(json.dumps(config))
+        file.close()
 else:
+    # Create config file if it doesn't exist
     file = open("config", "wb")
     file.write(json.dumps(config))
     file.close()
@@ -1041,5 +1048,3 @@ while True:
     mainLogic.update()
 
     delta = utime.ticks_cpu() - loopstart
-
-
